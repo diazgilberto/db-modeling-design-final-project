@@ -12,6 +12,7 @@
         - [Importing Location Data](#importing-location-data)
         - [Importing Faculty Data](#importing-faculty-data)
         - [Importing Student Data](#importing-student-data)
+        - [Importing Term Data](#importing-term-data)
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -323,3 +324,27 @@ S_ID|S_LAST|S_FIRST|S_MI|S_ADDRESS|S_CITY|S_STATE|S_ZIP|S_PHONE|S_CLASS|S_DOB|S_
 4|Smith|Mike||428 EN 16 Street|Abilene|TX|79902|3256543210|SO|1987-09-24|1841|2004-08-23|2
 5|Johnson|Lisa|M|764 College Drive|Abilene|TX|79901|3255432109|SO|1987-11-20|4420|2005-01-08|4
 6|Nguyen|Ni|M|688 4thStreet|Ft Worth|TX|78767|3254321098|FR|1988-12-04|9188|2006-08-22|3
+
+#### Importing Term Data
+
+```sql
+LOAD DATA LOCAL INFILE '/Users/gdiaz/gil-workspace/db-modeling-design-final-project/term.csv' 
+INTO TABLE TERM
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 2 LINES
+(TERM_ID,TERM_DESC,STATUS,@START_DATE)
+SET START_DATE = STR_TO_DATE(@START_DATE, '%d-%b-%y');
+
+SELECT * FROM TERM;
+```
+
+TERM_ID|TERM_DESC|STATUS|START_DATE
+----|----|----|----
+1|Fall 2006|CLOSED|2007-08-28
+2|Spring 2007|CLOSED|2008-01-09
+3|Summer 2007|CLOSED|2006-05-15
+4|Fall 2007|CLOSED|2007-08-28
+5|Spring 2008|OPEN|2008-01-08
+6|Summer 2008|OPEN|2008-05-07
