@@ -11,6 +11,8 @@
         - [Importing Course Data](#importing-course-data)
         - [Importing Location Data](#importing-location-data)
         - [Importing Faculty Data](#importing-faculty-data)
+        - [Importing Student Data](#importing-student-data)
+```
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -297,3 +299,28 @@ F_ID|F_LAST|F_FIRST|F_MI|F_PHONE|F_RANK|F_SUPER|F_PIN|LOC_ID
 3|Langley|Colin|A|3253456789|Assistant|4|9871|12
 4|Brown|Jonnel|D|3254567890|Full|NULL|8297|11
 5|Sealy|James|L|3255678901|Associate|2|6089|13
+
+#### Importing Student Data
+
+```sql
+LOAD DATA LOCAL INFILE '/Users/gdiaz/gil-workspace/db-modeling-design-final-project/student.csv' 
+INTO TABLE STUDENT
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 2 LINES
+(S_ID, S_LAST, S_FIRST, S_MI, S_ADDRESS, S_CITY, S_STATE, S_ZIP, S_PHONE, S_CLASS, @S_DOB, S_PIN, F_ID, @DATE_ENROLLED)
+SET S_DOB = STR_TO_DATE(@S_DOB, '%m/%d/%y'),
+DATE_ENROLLED = STR_TO_DATE(@DATE_ENROLLED, '%m/%d/%y');
+
+SELECT * FROM STUDENT;
+```
+
+S_ID|S_LAST|S_FIRST|S_MI|S_ADDRESS|S_CITY|S_STATE|S_ZIP|S_PHONE|S_CLASS|S_DOB|S_PIN|F_ID|DATE_ENROLLED
+----|----|----|----|----|----|----|----|----|----|----|----|----|----
+1|Jones|Tammy|R|1817 Eagleridge Circle|Houston|TX|77027|3250987654|SR|1986-07-14|8891|2003-06-03|1
+2|Perez|Jorge|C|951 Rainbow Drive|Abilene|TX|79901|3258765432|SR|1986-08-19|1230|2002-01-10|1
+3|Marsh|John|A|1275 W Main St|Dallas|TX|78012|3257654321|JR|1983-10-10|1613|2003-08-24|1
+4|Smith|Mike||428 EN 16 Street|Abilene|TX|79902|3256543210|SO|1987-09-24|1841|2004-08-23|2
+5|Johnson|Lisa|M|764 College Drive|Abilene|TX|79901|3255432109|SO|1987-11-20|4420|2005-01-08|4
+6|Nguyen|Ni|M|688 4thStreet|Ft Worth|TX|78767|3254321098|FR|1988-12-04|9188|2006-08-22|3
