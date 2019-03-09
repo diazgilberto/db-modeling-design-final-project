@@ -12,7 +12,6 @@
         - [Importing Location Data](#importing-location-data)
         - [Importing Faculty Data](#importing-faculty-data)
         - [Importing Student Data](#importing-student-data)
-```
 <!-- /TOC -->
 
 ## Lipscomb Database
