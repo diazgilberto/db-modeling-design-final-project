@@ -10,6 +10,7 @@
     - [Question 2: Populating The Database](#question-2-populating-the-database)
         - [Importing Course Data](#importing-course-data)
         - [Importing Location Data](#importing-location-data)
+        - [Importing Faculty Data](#importing-faculty-data)
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -270,3 +271,28 @@ LOC_ID|BLDG_CODE|ROOM|CAPACITY
 11|BUS|433|1
 12|LIB|217|2
 13|LIB|222|1
+
+#### Importing Faculty Data
+
+```sql
+LOAD DATA LOCAL INFILE '/Users/gdiaz/gil-workspace/db-modeling-design-final-project/faculty.csv' 
+INTO TABLE FACULTY
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 2 LINES
+(F_ID,F_LAST,F_FIRST,F_MI,LOC_ID,F_PHONE,F_RANK,@F_SUPER,F_PIN)
+SET F_SUPER = IF(@F_SUPER = '',NULL, @F_SUPER);
+
+ALTER TABLE FACULTY
+ADD FOREIGN KEY (F_SUPER)
+REFERENCES FACULTY(F_ID);
+
+SELECT * FROM FACULTY;
+```
+F_ID|F_LAST|F_FIRST|F_MI|F_PHONE|F_RANK|F_SUPER|F_PIN|LOC_ID
+1|Marx|Teresa|J|3251234567|Associate|4|6339|9
+2|Zhulin|Mark|M|3252345678|Full|NULL|1121|10
+3|Langley|Colin|A|3253456789|Assistant|4|9871|12
+4|Brown|Jonnel|D|3254567890|Full|NULL|8297|11
+5|Sealy|James|L|3255678901|Associate|2|6089|13
