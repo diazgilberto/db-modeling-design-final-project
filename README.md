@@ -291,6 +291,7 @@ REFERENCES FACULTY(F_ID);
 SELECT * FROM FACULTY;
 ```
 F_ID|F_LAST|F_FIRST|F_MI|F_PHONE|F_RANK|F_SUPER|F_PIN|LOC_ID
+----|----|----|----|----|----|----|----|----
 1|Marx|Teresa|J|3251234567|Associate|4|6339|9
 2|Zhulin|Mark|M|3252345678|Full|NULL|1121|10
 3|Langley|Colin|A|3253456789|Assistant|4|9871|12
