@@ -1,12 +1,14 @@
-# Database Modeling & Design Final Project
+# Database Modeling And Design Final Project
 <!-- TOC -->
-- [Database Modeling & Design Final Project](#database-modeling-&-design-final-project)
+- [Database Modeling And Design Final Project](#database-modeling-and-design-final-project)
 - [Lipscomb Database](#lipscomb-database)
     - [Question 1: Defining The Database](#question-1-defining-the-database)
         - [Create database code](#create-database-code)
         - [Primary and Foreign Key's Table](#primary-and-foreign-keys-table)
         - [Foreign Key's Deletes and Updates](#foreign-keys-deletes-and-updates)
         - [Variable Attributes](#variable-attributes)
+    - [Question 2: Populating The Database](#populating-the-database)
+        - [Importing Course Data](#importing-course-data)
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -212,4 +214,22 @@ Course Section|COURSE\_ID, TERM\_ID, F\_ID, LOC\_ID|No action delete, cascade up
 Enrollment|S\_ID, C\_SEC\_ID|No Action delete, cascade update on Student table and restrict delete, cascade update on Course Section table.
 
 #### Variable Attributes
-> Some variables where recommended to be `string` typed and got changed something else. For instance, `START_DATE` in the `TERM` table was a `string` typed and got changed to `date` data typed. The `ENROLLMENT` table got added a unique primary key named `ENR_ID`. Also, in the `FACULTY` table, the `F_SUPER` field got converted to a foreign key that references to the primary key in the same table which is `F_ID`. This is done to find who is the supervisor of specific faculty member.
+> Some variables where recommended to be `string` typed and got changed something else. For instance, `START_DATE` in the `TERM` table was a `string` typed and got changed to `date` data typed. The `ENROLLMENT` table got added a unique primary key named `ENR_ID`. Also, in the `FACULTY` table, the `F_SUPER` field got converted to a foreign key that references to the primary key in the same table which is `F_ID` after inserting the data. This is done to find who is the supervisor of specific faculty member.
+
+### Question 2: Populating The Database
+
+> The original files containing the data were in `.doc` file. That data was transferred to `.csv` files by copy and pasting each table to a text edit (VSCode). After creating `.csv` files and the database, the `.csv` files were loaded into the database.
+
+#### Importing Course Data
+
+```sql
+LOAD DATA LOCAL INFILE '/Users/gdiaz/gil-workspace/db-modeling-design-final-project/course.csv' 
+INTO TABLE COURSE
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 2 LINES
+(COURSE_ID,COURSE_NO,COURSE_NAME,CREDITS);
+
+SELECT * FROM COURSE;
+```
