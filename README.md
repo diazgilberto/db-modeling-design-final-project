@@ -1,5 +1,17 @@
 # Database Modeling & Design Final Project
+<!-- TOC -->
+- [Database Modeling & Design Final Project](#database-modeling-&-design-final-project)
+- [Lipscomb Database](#lipscomb-database)
+    - [Question 1: Defining The Database](#question-1-defining-the-database)
+        - [Create database code](#create-database-code)
+        - [Primary and Foreign Key's Table](#primary-and-foreign-keys-table)
+        - [Foreign Key's Deletes and Updates](#foreign-keys-deletes-and-updates)
+        - [Variable Attributes](#variable-attributes)
+<!-- /TOC -->
 
+## Lipscomb Database
+### Question 1: Defining The Database
+#### Create database code
 ```sql
 CREATE DATABASE IF NOT EXISTS LIPSCOMB;
 
@@ -177,3 +189,27 @@ CREATE TABLE `ENROLLMENT` (
         ON DELETE RESTRICT
 );
 ```
+
+#### Primary and Foreign Key's Table
+
+Table|Primary Key|Foreign Key
+---|---|---
+LOCATION|LOC_ID|None
+STUDENT|S\_ID|F\_ID => Reference to FACULTY (F_ID)
+FACULTY|F\_ID|F\_SUPER => Reference to FACULTY (F_\_ID)
+TERM|TERM_ID|None
+COURSE|COURSE_ID|None
+COURSE\_SECTION|C\_SEC_ID\_ID|COURSE\_ID => Reference to COURSE (COURSE\_ID), TERM\_ID => Reference to TERM (TERM\_ID), F\_ID => Reference to FACULTY (F\_ID), LOC\_ID => Reference to LOCATION (LOC\_ID)
+ENROLLMENT|ENR\_ID|S\_ID => Reference to STUDENT (S\_ID), C\_SEC\_ID => Reference to COURSE\_SECTION (C\_SEC_ID)
+
+#### Foreign Key's Deletes and Updates
+
+Table|Foreign Key|Justification Description
+---|---|---
+Student|F_ID|Restricted delete, cascade update on Faculty when delete on Student table.
+Faculty|LOC_ID|Restricted delete, cascade update on Location when delete on Faculty table.
+Course Section|COURSE\_ID, TERM\_ID, F\_ID, LOC\_ID|No action delete, cascade update on Course, Term, Faculty, and Location tables.
+Enrollment|S\_ID, C\_SEC\_ID|No Action delete, cascade update on Student table and restrict delete, cascade update on Course Section table.
+
+#### Variable Attributes
+> Some variables where recommended to be `string` typed and got changed something else. For instance, `START_DATE` in the `TERM` table was a `string` typed and got changed to `date` data typed. The `ENROLLMENT` table got added a unique primary key named `ENR_ID`. Also, in the `FACULTY` table, the `F_SUPER` field got converted to a foreign key that references to the primary key in the same table which is `F_ID`. This is done to find who is the supervisor of specific faculty member.
