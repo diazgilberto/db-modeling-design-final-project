@@ -7,7 +7,7 @@
         - [Primary and Foreign Key's Table](#primary-and-foreign-keys-table)
         - [Foreign Key's Deletes and Updates](#foreign-keys-deletes-and-updates)
         - [Variable Attributes](#variable-attributes)
-    - [Question 2: Populating The Database](#populating-the-database)
+    - [Question 2: Populating The Database](#question-2-populating-the-database)
         - [Importing Course Data](#importing-course-data)
 <!-- /TOC -->
 
