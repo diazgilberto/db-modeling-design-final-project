@@ -9,6 +9,7 @@
         - [Variable Attributes](#variable-attributes)
     - [Question 2: Populating The Database](#question-2-populating-the-database)
         - [Importing Course Data](#importing-course-data)
+        - [Importing Location Data](#importing-location-data)
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -218,7 +219,7 @@ Enrollment|S\_ID, C\_SEC\_ID|No Action delete, cascade update on Student table a
 
 ### Question 2: Populating The Database
 
-> The original files containing the data were in `.doc` file. That data was transferred to `.csv` files by copy and pasting each table to a text edit (VSCode). After creating `.csv` files and the database, the `.csv` files were loaded into the database.
+> The original files containing the data were in `.doc` file. That data was transferred to `.csv` files by copy and pasting each table to a text editor (VSCode). After creating `.csv` files and the database, the `.csv` files were loaded into the database.
 
 #### Importing Course Data
 
@@ -233,3 +234,39 @@ IGNORE 2 LINES
 
 SELECT * FROM COURSE;
 ```
+COURSE_ID|COURSE_NO|COURSE_NAME|CREDITS
+----|----|----|----
+1|IT 101|Intro. to Info. Tech.|3
+2|IS 301|Systems Analysis|3
+3|IT 240|Intro. to Database Systems|3
+4|CS 120|Intro. To Programming in C++|3
+5|IT 451|Web-Based Systems|3
+
+#### Importing Location Data
+
+```sql
+LOAD DATA LOCAL INFILE '/Users/gdiaz/gil-workspace/db-modeling-design-final-project/location.csv' 
+INTO TABLE LOCATION
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 2 LINES
+(LOC_ID,BLDG_CODE,ROOM,CAPACITY);
+
+SELECT * FROM LOCATION;
+```
+LOC_ID|BLDG_CODE|ROOM|CAPACITY
+----|----|----|----
+1|CR|101|150
+2|CR|202|40
+3|CR|103|35
+4|CR|105|35
+5|BUS|105|42
+6|BUS|404|35
+7|BUS|421|35
+8|BUS|211|55
+9|BUS|424|1
+10|BUS|402|1
+11|BUS|433|1
+12|LIB|217|2
+13|LIB|222|1
