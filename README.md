@@ -435,6 +435,7 @@ ENR_ID|S_ID|C_SEC_ID|GRADE
 20|6|12|NULL
 
 
+----
 ### Question 3: Checking Your Database
 
 1. Insert the following tuples into the `COURSE_SECTION` relation:
