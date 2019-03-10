@@ -15,6 +15,7 @@
         - [Importing Term Data](#importing-term-data)
         - [Importing Course Section Data](#importing-course-section-data)
         - [Importing Enrollment Data](#importing-enrollment-data)
+    - [Question 3: Checking Your Database](#question-3-checking-your-database)
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -220,7 +221,7 @@ Course Section|COURSE\_ID, TERM\_ID, F\_ID, LOC\_ID|No action delete, cascade up
 Enrollment|S\_ID, C\_SEC\_ID|No Action delete, cascade update on Student table and restrict delete, cascade update on Course Section table.
 
 #### Variable Attributes
-> Some variables where recommended to be `string` typed and got changed something else. For instance, `START_DATE` in the `TERM` table was a `string` typed and got changed to `date` data typed. The `ENROLLMENT` table got added a unique primary key named `ENR_ID`. Also, in the `FACULTY` table, the `F_SUPER` field got converted to a foreign key that references to the primary key in the same table which is `F_ID` after inserting the data. This is done to find who is the supervisor of specific faculty member.
+> Some variables where recommended to be `string` typed and got changed something else. For instance, `START_DATE` in the `TERM` table was a `string` typed and got changed to `date` data type. The `ENROLLMENT` table got added a unique primary key named `ENR_ID`. Also, in the `FACULTY` table, the `F_SUPER` field got converted to a foreign key that references to the primary key in the same table which is `F_ID` after inserting the data. This is done to find who is the supervisor of specific faculty member. 
 
 ### Question 2: Populating The Database
 
@@ -432,3 +433,37 @@ ENR_ID|S_ID|C_SEC_ID|GRADE
 18|5|13|NULL
 19|6|11|NULL
 20|6|12|NULL
+
+
+### Question 3: Checking Your Database
+
+1. Insert the following tuples into the `COURSE_SECTION` relation:
+
+```sql
+INSERT INTO COURSE_SECTION
+      (C_SEC_ID, COURSE_ID, TERM_ID, SEC_NUM, F_ID, MTG_DAYS, START_TIME, END_TIME, LOC_ID, MAX_ENRL)
+VALUES
+      (12, 2, 6, 2, 2, 'MTWRF', 1000, 1130, 5, 35);
+```
+    Last Error Message
+    Duplicate entry '12' for key 'PRIMARY'
+
+```sql
+INSERT INTO COURSE_SECTION
+      (C_SEC_ID, COURSE_ID, TERM_ID, SEC_NUM, F_ID, MTG_DAYS, START_TIME, END_TIME, LOC_ID, MAX_ENRL)
+VALUES
+      (12, 2, 6, 2, 2, 'MTWRF', 900, 1030, 6, 35);
+```
+
+    Last Error Message
+    Duplicate entry '12' for key 'PRIMARY'
+
+```sql      
+INSERT INTO COURSE_SECTION
+      (C_SEC_ID, COURSE_ID, TERM_ID, SEC_NUM, F_ID, MTG_DAYS, START_TIME, END_TIME, LOC_ID, MAX_ENRL)
+VALUES
+(2, 1, 4, 2, 3, "TR", 930, 1045, 4, 35);
+```
+
+    Last Error Message
+    Duplicate entry '2' for key 'PRIMARY'
