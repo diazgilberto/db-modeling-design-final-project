@@ -509,3 +509,35 @@ VALUES
 
     Last Error Message
     Duplicate entry '3255678901' for key 'F_PHONE'
+
+3. Insert the following tuple from the `COURSE` relation:
+
+```sql
+INSERT INTO COURSE
+    (COURSE_ID,COURSE_NO,COURSE_NAME,CREDITS)
+VALUES
+(4, 'CS 120', 'Intro. to Programming in C++', 3);
+```
+
+    Last Error Message
+    Duplicate entry '4' for key 'PRIMARY'
+
+4. Delete the following tuple from the `LOCATION` relation: 
+
+```sql
+DELETE FROM LOCATION 
+WHERE LOC_ID = 11;
+```
+
+    Last Error Message
+    Cannot delete or update a parent row: a foreign key constraint fails (`LIPSCOMB`.`FACULTY`, CONSTRAINT `FACULTY_ibfk_1` FOREIGN KEY (`LOC_ID`) REFERENCES `LOCATION` (`LOC_ID`) ON UPDATE CASCADE)
+
+5. Delete the following tuple from `TERM` relation:
+
+```sql
+DELETE  FROM TERM
+WHERE TERM_ID = 4; 
+```
+
+    Last Error Message
+    Cannot delete or update a parent row: a foreign key constraint fails (`LIPSCOMB`.`COURSE_SECTION`, CONSTRAINT `COURSE_SECTION_ibfk_2` FOREIGN KEY (`TERM_ID`) REFERENCES `TERM` (`TERM_ID`) ON DELETE NO ACTION ON UPDATE CASCADE)
