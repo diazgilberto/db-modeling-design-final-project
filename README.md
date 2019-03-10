@@ -467,3 +467,45 @@ VALUES
 
     Last Error Message
     Duplicate entry '2' for key 'PRIMARY'
+
+2. Insert the following tuples into the `FACULTY` relation:
+
+```sql
+INSERT INTO FACULTY
+    (F_ID,F_LAST,F_FIRST,F_MI,LOC_ID,F_PHONE,F_RANK,F_SUPER,F_PIN)
+VALUES
+    (4, 'Brown', 'Colin', 'D', 11, '3253456789', 'Assistant', 4, 9871);
+```
+
+    Last Error Message
+    Duplicate entry '4' for key 'PRIMARY'
+
+```sql
+INSERT INTO FACULTY
+    (F_ID,F_LAST,F_FIRST,F_MI,LOC_ID,F_PHONE,F_RANK,F_SUPER,F_PIN)
+VALUES
+    (6, 'Reeves', 'Bob', 'S', 15, '3256789012', 'Full', '', 1234);
+```
+
+    Last Error Message
+    Incorrect integer value: '' for column 'F_SUPER' at row 1
+
+```sql
+INSERT INTO FACULTY
+    (F_ID,F_LAST,F_FIRST,F_MI,LOC_ID,F_PHONE,F_RANK,F_SUPER,F_PIN)
+VALUES
+    (6, 'Reeves', 'Bob', 'S', 10, '3256789012', 'Assistant', 7, 1234);
+```
+
+    Last Error Message
+    Cannot add or update a child row: a foreign key constraint fails (`LIPSCOMB`.`FACULTY`, CONSTRAINT `FACULTY_ibfk_2` FOREIGN KEY (`F_SUPER`) REFERENCES `FACULTY` (`F_ID`))
+
+```sql
+INSERT INTO FACULTY
+    (F_ID,F_LAST,F_FIRST,F_MI,LOC_ID,F_PHONE,F_RANK,F_SUPER,F_PIN)
+VALUES
+(6, 'Reeves', 'Bob', 'S', 10, '3255678901', 'Assistant', 2, 1234);
+```
+
+    Last Error Message
+    Duplicate entry '3255678901' for key 'F_PHONE'
