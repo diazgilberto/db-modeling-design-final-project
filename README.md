@@ -13,6 +13,7 @@
         - [Importing Faculty Data](#importing-faculty-data)
         - [Importing Student Data](#importing-student-data)
         - [Importing Term Data](#importing-term-data)
+        - [Importing Course Section Data](#importing-course-section-data)
 <!-- /TOC -->
 
 ## Lipscomb Database
