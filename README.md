@@ -350,7 +350,7 @@ TERM_ID|TERM_DESC|STATUS|START_DATE
 5|Spring 2008|OPEN|2008-01-08
 6|Summer 2008|OPEN|2008-05-07
 
-#### Import Course Section Data
+#### Importing Course Section Data
 
 ```sql
 LOAD DATA LOCAL INFILE '/Users/gdiaz/gil-workspace/db-modeling-design-final-project/course_section.csv' 
