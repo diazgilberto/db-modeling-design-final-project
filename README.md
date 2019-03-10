@@ -14,6 +14,7 @@
         - [Importing Student Data](#importing-student-data)
         - [Importing Term Data](#importing-term-data)
         - [Importing Course Section Data](#importing-course-section-data)
+        - [Importing Enrollment Data](#importing-enrollment-data)
 <!-- /TOC -->
 
 ## Lipscomb Database
