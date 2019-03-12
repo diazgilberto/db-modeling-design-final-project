@@ -16,6 +16,7 @@
         - [Importing Course Section Data](#importing-course-section-data)
         - [Importing Enrollment Data](#importing-enrollment-data)
     - [Question 3: Checking Your Database](#question-3-checking-your-database)
+    - [Question 4: Simple Database Queries](#question-4-simple-database-queries)
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -542,3 +543,24 @@ WHERE TERM_ID = 4;
 
     Last Error Message
     Cannot delete or update a parent row: a foreign key constraint fails (`LIPSCOMB`.`COURSE_SECTION`, CONSTRAINT `COURSE_SECTION_ibfk_2` FOREIGN KEY (`TERM_ID`) REFERENCES `TERM` (`TERM_ID`) ON DELETE NO ACTION ON UPDATE CASCADE)
+
+----
+
+### Question 4: Simple Database Queries
+
+1. Which students have A's and B's
+
+```sql
+SELECT DISTINCT STUDENT.S_ID, S_LAST, S_FIRST
+FROM ENROLLMENT
+JOIN STUDENT
+    ON ENROLLMENT.S_ID = STUDENT.S_ID
+WHERE ENROLLMENT.GRADE IN ("A","B");
+```
+
+S_ID|S_LAST|S_FIRST
+----|----|----
+1|Jones|Tammy
+2|Perez|Jorge
+5|Johnson|Lisa
+
