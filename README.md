@@ -742,4 +742,26 @@ Systems Analysis|A|1
 Intro. to Database Systems|B|1
 Web-Based Systems|B|1
 
+11. Create a query that returns the union of the `STUDENT` and `FACULTY` tables over the attributes `S_LAST`, `S_FIRST`, and `S_PHONE` from `STUDENT`, and `F_LAST`, `F_FIRST`, and `F_PHONE` from `FACULTY`.
 
+```sql
+SELECT S_LAST, S_FIRST, S_PHONE
+FROM STUDENT
+UNION 
+SELECT F_LAST, F_FIRST, F_PHONE
+FROM FACULTY
+```
+
+LAST_NAME|FIRST_NAME|PHONE
+----|----|----
+Jones|Tammy|3250987654
+Perez|Jorge|3258765432
+Marsh|John|3257654321
+Smith|Mike|3256543210
+Johnson|Lisa|3255432109
+Nguyen|Ni|3254321098
+Marx|Teresa|3251234567
+Zhulin|Mark|3252345678
+Langley|Colin|3253456789
+Brown|Jonnel|3254567890
+Sealy|James|3255678901
