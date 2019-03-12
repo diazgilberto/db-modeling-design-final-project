@@ -576,3 +576,26 @@ TERM_ID|TERM_DESC|STATUS|START_DATE
 2|Spring 2007|CLOSED|2008-01-09
 3|Summer 2007|CLOSED|2006-05-15
 4|Fall 2007|CLOSED|2007-08-28
+
+3. List the building code, room, and capacity for all the rooms. Sort the result in ascending order by building code then by room.
+
+```sql
+SELECT BLDG_CODE, ROOM, CAPACITY
+FROM LOCATION
+ORDER BY BLDG_CODE, ROOM;
+```
+
+BLDG_CODE|ROOM|CAPACITY
+BUS|105|42
+BUS|211|55
+BUS|402|1
+BUS|404|35
+BUS|421|35
+BUS|424|1
+BUS|433|1
+CR|101|150
+CR|103|35
+CR|105|35
+CR|202|40
+LIB|217|2
+LIB|222|1
