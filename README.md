@@ -724,5 +724,22 @@ Marx
 Zhulin
 Langley
 
+10. List all the courses and grades for a student by the name Tammy Jones. Tammy doesn't remember her ID. She also doesn't remember all the courses she took.
+```sql
+SELECT C.COURSE_NAME, E.GRADE, S.S_ID
+FROM COURSE AS C, ENROLLMENT AS E, STUDENT AS S, COURSE_SECTION AS CS
+    WHERE E.C_SEC_ID = CS.C_SEC_ID 
+        AND CS.COURSE_ID = C.COURSE_ID 
+        AND E.S_ID = S.S_ID 
+        AND S.S_LAST = 'Jones' 
+        AND S.S_FIRST = 'Tammy';
+```
+
+COURSE_NAME|GRADE|S_ID
+----|----|----
+Intro. to Info. Tech.|A|1
+Systems Analysis|A|1
+Intro. to Database Systems|B|1
+Web-Based Systems|B|1
 
 
