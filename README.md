@@ -674,3 +674,19 @@ AND (GRADE IS NOT NULL);
 COURSE_COUNT
 ----|
 3
+
+7. Use the GROUP BY clause to list the building code and the total capacity of each building, but only for those buildings whose total capacity exceeds 100
+
+```sql
+SELECT BLDG_CODE, SUM(CAPACITY) AS TOTAL_CAPACITY
+FROM LOCATION L
+GROUP BY BLDG_CODE
+HAVING SUM(CAPACITY) > 100;
+```
+
+BLDG_CODE|TOTAL_CAPACITY
+----|----
+BUS|170
+CR|260
+
+
