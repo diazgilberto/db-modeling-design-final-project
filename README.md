@@ -689,4 +689,21 @@ BLDG_CODE|TOTAL_CAPACITY
 BUS|170
 CR|260
 
+8. For each student, list the student ID, student last name, student first name, faculty ID, and faculty last name.
+
+```sql
+SELECT S.S_ID, S.S_LAST, S.S_FIRST, S.F_ID, F.F_LAST
+FROM STUDENT AS S, FACULTY AS F
+WHERE S.F_ID = F.F_ID;
+```
+
+S_ID|S_LAST|S_FIRST|F_ID|F_LAST
+----|----|----|----
+1|Jones|Tammy|1|Marx
+2|Perez|Jorge|1|Marx
+3|Marsh|John|1|Marx
+4|Smith|Mike|2|Zhulin
+5|Johnson|Lisa|4|Brown
+6|Nguyen|Ni|3|Langley
+
 
