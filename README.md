@@ -600,3 +600,18 @@ CR|105|35
 CR|202|40
 LIB|217|2
 LIB|222|1
+
+4. Suppose LIPSCOMB charges $730.00 per credit hour for tuition.  To determine how much tuition a student is charged for a class, you can simply multiply the number of credit hours earned for a course by the credit hour tuition rate.  For each course, list the course number, course name, and tuition charge.
+
+```sql
+SELECT COURSE_NO, COURSE_NAME, 
+CONCAT('$', FORMAT(CREDITS * 730, 2)) AS TUITION_CHARGE
+FROM COURSE;
+```
+COURSE_NO|COURSE_NAME|TUITION_CHARGE
+----|----|----
+IT 101|Intro. to Info. Tech.|$2,190.00
+IS 301|Systems Analysis|$2,190.00
+IT 240|Intro. to Database Systems|$2,190.00
+CS 120|Intro. To Programming in C++|$2,190.00
+IT 451|Web-Based Systems|$2,190.00
