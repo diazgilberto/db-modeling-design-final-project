@@ -698,7 +698,7 @@ WHERE S.F_ID = F.F_ID;
 ```
 
 S_ID|S_LAST|S_FIRST|F_ID|F_LAST
-----|----|----|----
+----|----|----|----|----
 1|Jones|Tammy|1|Marx
 2|Perez|Jorge|1|Marx
 3|Marsh|John|1|Marx
