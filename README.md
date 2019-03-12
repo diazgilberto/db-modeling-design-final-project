@@ -17,6 +17,7 @@
         - [Importing Enrollment Data](#importing-enrollment-data)
     - [Question 3: Checking Your Database](#question-3-checking-your-database)
     - [Question 4: Simple Database Queries](#question-4-simple-database-queries)
+    - [Question 5: Slightly Complex Database Queries](#question-5-slightly-complex-database-queries)
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -548,7 +549,7 @@ WHERE TERM_ID = 4;
 
 ### Question 4: Simple Database Queries
 
-1. Which students have A's and B's
+a. Which students have A's and B's
 
 ```sql
 SELECT DISTINCT STUDENT.S_ID, S_LAST, S_FIRST
@@ -564,7 +565,7 @@ S_ID|S_LAST|S_FIRST
 2|Perez|Jorge
 5|Johnson|Lisa
 
-2. Retrieve the terms for the 2007 academic year. 
+b. Retrieve the terms for the 2007 academic year. 
 
 ```sql
 SELECT * FROM TERM
@@ -577,7 +578,7 @@ TERM_ID|TERM_DESC|STATUS|START_DATE
 3|Summer 2007|CLOSED|2006-05-15
 4|Fall 2007|CLOSED|2007-08-28
 
-3. List the building code, room, and capacity for all the rooms. Sort the result in ascending order by building code then by room.
+c. List the building code, room, and capacity for all the rooms. Sort the result in ascending order by building code then by room.
 
 ```sql
 SELECT BLDG_CODE, ROOM, CAPACITY
@@ -601,7 +602,7 @@ CR|202|40
 LIB|217|2
 LIB|222|1
 
-4. Suppose LIPSCOMB charges $730.00 per credit hour for tuition.  To determine how much tuition a student is charged for a class, you can simply multiply the number of credit hours earned for a course by the credit hour tuition rate.  For each course, list the course number, course name, and tuition charge.
+d. Suppose LIPSCOMB charges $730.00 per credit hour for tuition.  To determine how much tuition a student is charged for a class, you can simply multiply the number of credit hours earned for a course by the credit hour tuition rate.  For each course, list the course number, course name, and tuition charge.
 
 ```sql
 SELECT COURSE_NO, COURSE_NAME, 
@@ -617,7 +618,7 @@ IT 240|Intro. to Database Systems|$2,190.00
 CS 120|Intro. To Programming in C++|$2,190.00
 IT 451|Web-Based Systems|$2,190.00
 
-5. In one query, use group functions to sum the maximum enrollment for all course sections and calculate the average, maximum, and minimum current enrollment for the Summer 2008 term.
+e. In one query, use group functions to sum the maximum enrollment for all course sections and calculate the average, maximum, and minimum current enrollment for the Summer 2008 term.
 
 ```sql 
 SELECT A.C_SEC_ID, A.SUM_MAX_ENROLLMENTS, B.AVERAGE_CURRENT_ENROLLMENT, 
@@ -655,7 +656,7 @@ C_SEC_ID|SUM_MAX_ENROLLMENTS|AVERAGE_CURRENT_ENROLLMENT|MAX_CURRENT_ENROLLMENT|M
 12|105|2.6667|3|2
 13|70|2.6667|3|2
 
-6. What is the total number of courses for which student Lisa Johnson has received a grade?
+f. What is the total number of courses for which student Lisa Johnson has received a grade?
 
 ```sql
 SELECT COUNT(DISTINCT C.COURSE_ID) COURSE_COUNT
@@ -675,7 +676,7 @@ COURSE_COUNT
 ----|
 3
 
-7. Use the GROUP BY clause to list the building code and the total capacity of each building, but only for those buildings whose total capacity exceeds 100
+g. Use the GROUP BY clause to list the building code and the total capacity of each building, but only for those buildings whose total capacity exceeds 100
 
 ```sql
 SELECT BLDG_CODE, SUM(CAPACITY) AS TOTAL_CAPACITY
@@ -689,7 +690,7 @@ BLDG_CODE|TOTAL_CAPACITY
 BUS|170
 CR|260
 
-8. For each student, list the student ID, student last name, student first name, faculty ID, and faculty last name.
+h. For each student, list the student ID, student last name, student first name, faculty ID, and faculty last name.
 
 ```sql
 SELECT S.S_ID, S.S_LAST, S.S_FIRST, S.F_ID, F.F_LAST
@@ -706,7 +707,7 @@ S_ID|S_LAST|S_FIRST|F_ID|F_LAST
 5|Johnson|Lisa|4|Brown
 6|Nguyen|Ni|3|Langley
 
-9. List the last names of faculty who are teaching in the Summer 2008 term.
+i. List the last names of faculty who are teaching in the Summer 2008 term.
 
 ```sql
 SELECT F.F_LAST
@@ -724,7 +725,7 @@ Marx
 Zhulin
 Langley
 
-10. List all the courses and grades for a student by the name Tammy Jones. Tammy doesn't remember her ID. She also doesn't remember all the courses she took.
+j. List all the courses and grades for a student by the name Tammy Jones. Tammy doesn't remember her ID. She also doesn't remember all the courses she took.
 ```sql
 SELECT C.COURSE_NAME, E.GRADE, S.S_ID
 FROM COURSE AS C, ENROLLMENT AS E, STUDENT AS S, COURSE_SECTION AS CS
@@ -742,7 +743,7 @@ Systems Analysis|A|1
 Intro. to Database Systems|B|1
 Web-Based Systems|B|1
 
-11. Create a query that returns the union of the `STUDENT` and `FACULTY` tables over the attributes `S_LAST`, `S_FIRST`, and `S_PHONE` from `STUDENT`, and `F_LAST`, `F_FIRST`, and `F_PHONE` from `FACULTY`.
+k. Create a query that returns the union of the `STUDENT` and `FACULTY` tables over the attributes `S_LAST`, `S_FIRST`, and `S_PHONE` from `STUDENT`, and `F_LAST`, `F_FIRST`, and `F_PHONE` from `FACULTY`.
 
 ```sql
 SELECT S_LAST, S_FIRST, S_PHONE
@@ -765,3 +766,7 @@ Zhulin|Mark|3252345678
 Langley|Colin|3253456789
 Brown|Jonnel|3254567890
 Sealy|James|3255678901
+
+
+### Question 5: Slightly Complex Database Queries
+
