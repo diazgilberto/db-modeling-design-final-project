@@ -767,6 +767,24 @@ Langley|Colin|3253456789
 Brown|Jonnel|3254567890
 Sealy|James|3255678901
 
+----
 
 ### Question 5: Slightly Complex Database Queries
 
+a. Create a nested query to retrieve the first and last names of all students who have the same S_CLASS values as Jorge Perez.
+
+```sql
+SELECT S_FIRST, S_LAST
+FROM STUDENT S
+WHERE S_CLASS = (
+    SELECT S_CLASS
+    FROM STUDENT S
+    WHERE S_FIRST = 'Jorge'
+    AND S_LAST = 'Perez'
+);
+```
+
+S_FIRST|S_LAST
+----|----
+Tammy|Jones
+Jorge|Perez
