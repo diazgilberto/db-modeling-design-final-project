@@ -564,3 +564,15 @@ S_ID|S_LAST|S_FIRST
 2|Perez|Jorge
 5|Johnson|Lisa
 
+2. Retrieve the terms for the 2007 academic year. 
+
+```sql
+SELECT * FROM TERM
+WHERE TERM_DESC LIKE '%2007';
+```
+
+TERM_ID|TERM_DESC|STATUS|START_DATE
+----|----|----|----
+2|Spring 2007|CLOSED|2008-01-09
+3|Summer 2007|CLOSED|2006-05-15
+4|Fall 2007|CLOSED|2007-08-28
