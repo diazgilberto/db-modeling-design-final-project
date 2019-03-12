@@ -706,4 +706,23 @@ S_ID|S_LAST|S_FIRST|F_ID|F_LAST
 5|Johnson|Lisa|4|Brown
 6|Nguyen|Ni|3|Langley
 
+9. List the last names of faculty who are teaching in the Summer 2008 term.
+
+```sql
+SELECT F.F_LAST
+FROM COURSE_SECTION CS
+LEFT JOIN FACULTY F
+	ON CS.F_ID = F.F_ID
+LEFT JOIN TERM T
+	ON CS.TERM_ID = T.TERM_ID
+		WHERE TERM_DESC = 'Summer 2008'
+```
+
+F_LAST
+----|
+Marx
+Zhulin
+Langley
+
+
 
