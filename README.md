@@ -998,3 +998,18 @@ F_ID|F_LAST|F_FIRST|F_MI|LOC_ID|F_PHONE|F_RANK|F_SUPER
 d. Explain the effect of insert operation in (b) to the database.  Why is this so?
 
 > In `SQL`, the clause `WITH CHECK OPTION` should be added at the end of the view definition if a view is to be updated by `INSERT`, `DELETE`, or `UPDATE` statements. This allows the system to reject operations that violate the `SQL` rules for view updates.
+
+e. Create a query that joins faculty_view with location to list the names of each faculty member, along with the building code and room number of the faculty member’s office.
+
+```sql
+SELECT A.F_LAST, A.F_FIRST, B.BLDG_CODE, B.ROOM FROM FACULTY_VIEW AS A, LOCATION AS B
+WHERE A.LOC_ID = B.LOC_ID;
+```
+
+A.F_LAST|A.F_FIRST|B.BLDG_CODE|B.ROOM
+----|----|----|----
+Marx|Teresa|BUS|424
+Zhulin|Mark|BUS|402
+Langley|Colin|LIB|217
+Brown|Jonnel|BUS|433
+Sealy|James|LIB|222
