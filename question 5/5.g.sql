@@ -1,0 +1,16 @@
+SELECT COURSE_NAME FROM COURSE 
+WHERE COURSE_ID IN 
+    (
+        SELECT COURSE_ID FROM COURSE_SECTION WHERE C_SEC_ID IN
+        (
+            SELECT C_SEC_ID FROM ENROLLMENT WHERE S_ID IN
+            (
+                SELECT S_ID FROM STUDENT WHERE S_CLASS LIKE "FR" OR S_CLASS LIKE "SO"
+	                OR S_CLASS LIKE "JR"
+            )
+        )
+    )
+    AND COURSE_ID NOT IN
+        (
+            SELECT COURSE_ID FROM COURSE_SECTION WHERE TERM_ID = 6
+        );
