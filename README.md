@@ -994,3 +994,7 @@ F_ID|F_LAST|F_FIRST|F_MI|LOC_ID|F_PHONE|F_RANK|F_SUPER
 3|Langley|Colin|A|12|3253456789|Assistan|4
 4|Brown|Jonnel|D|11|3254567890|Ful|NULL
 5|Sealy|James|L|13|3255678901|Associat|2
+
+d. Explain the effect of insert operation in (b) to the database.  Why is this so?
+
+> In `SQL`, the clause `WITH CHECK OPTION` should be added at the end of the view definition if a view is to be updated by `INSERT`, `DELETE`, or `UPDATE` statements. This allows the system to reject operations that violate the `SQL` rules for view updates.
