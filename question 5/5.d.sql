@@ -1,0 +1,14 @@
+SELECT S_FIRST, S_LAST FROM STUDENT WHERE S_ID IN
+    (
+        SELECT S_ID FROM ENROLLMENT WHERE C_SEC_ID IN
+        (
+            SELECT C_SEC_ID FROM ENROLLMENT WHERE S_ID = 2
+        )
+        AND C_SEC_ID IN
+        (
+            SELECT C_SEC_ID FROM COURSE_SECTION WHERE LOC_ID IN
+            (
+                SELECT LOC_ID FROM LOCATION WHERE BLDG_CODE LIKE 'CR'
+            )
+        )
+    );

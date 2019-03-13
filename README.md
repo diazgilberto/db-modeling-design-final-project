@@ -807,3 +807,50 @@ Tammy|Jones
 Jorge|Perez
 John|Marsh
 Lisa|Johnson
+
+c. Create a nested query to retrieve the last and first names of all students who have the same S_Class value as Jorge Perez and who have also been enrolled in a course section with him.
+
+```sql
+SELECT S_FIRST, S_LAST FROM STUDENT WHERE S_CLASS = 
+    (
+        SELECT S_CLASS FROM STUDENT WHERE S_FIRST LIKE 'Jorge' AND S_LAST LIKE 'Perez'
+    )
+    AND S_ID IN 
+    (
+        SELECT S_ID FROM ENROLLMENT WHERE C_SEC_ID IN
+        (
+            SELECT C_SEC_ID FROM ENROLLMENT WHERE S_ID = 2
+        )
+    );
+```
+
+S_FIRST|S_LAST
+----|----
+Tammy|Jones
+Jorge|Perez
+
+d. A nested subquery is a subquery which contains a second subquery that specifies its search expression.  Use a nested subquery to create a query to retrieve the names of students who have taken courses with Jorge Perez in the CR building.
+
+```sql
+SELECT S_FIRST, S_LAST FROM STUDENT WHERE S_ID IN
+    (
+        SELECT S_ID FROM ENROLLMENT WHERE C_SEC_ID IN
+        (
+            SELECT C_SEC_ID FROM ENROLLMENT WHERE S_ID = 2
+        )
+        AND C_SEC_ID IN
+        (
+            SELECT C_SEC_ID FROM COURSE_SECTION WHERE LOC_ID IN
+            (
+                SELECT LOC_ID FROM LOCATION WHERE BLDG_CODE LIKE 'CR'
+            )
+        )
+    );
+```
+
+S_FIRST|S_LAST
+----|----
+Tammy|Jones
+Jorge|Perez
+John|Marsh
+Lisa|Johnson
