@@ -881,3 +881,29 @@ Intro. to Info. Tech.
 Systems Analysis
 Intro. to Database Systems
 Web-Based Systems
+
+f. Use the Intersect set operator to create a query that satisfies both requirements of Question 5(e).
+
+```sql
+SELECT COURSE_NAME FROM COURSE
+WHERE COURSE_ID IN
+    (
+        SELECT COURSE_ID FROM COURSE_SECTION WHERE C_SEC_ID IN
+        (
+            SELECT C_SEC_ID FROM ENROLLMENT WHERE S_ID IN
+            (
+                SELECT S_ID FROM STUDENT WHERE S_CLASS NOT LIKE 'SR'
+            )
+        )
+    )
+AND COURSE_ID IN
+    (
+        SELECT COURSE_ID FROM COURSE_SECTION WHERE TERM_ID = 6
+    );
+```
+
+COURSE_NAME
+----|
+Intro. to Info. Tech.
+Systems Analysis
+Intro. to Database Systems
