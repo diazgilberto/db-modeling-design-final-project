@@ -958,7 +958,8 @@ FROM FACULTY F;
 SELECT * FROM FACULTY_VIEW;
 ```
 
-F_ID|F_LAST|F_FIRST|F_MI|LOC_ID|F_PHONE|F_RANK|F_SUPER 
+F_ID|F_LAST|F_FIRST|F_MI|LOC_ID|F_PHONE|F_RANK|F_SUPER
+----|----|----|----|----|----|----|---- 
 1|Marx|Teresa|J|9|3251234567|Associat|4
 2|Zhulin|Mark|M|10|3252345678|Ful|NULL
 3|Langley|Colin|A|12|3253456789|Assistan|4
