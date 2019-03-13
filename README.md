@@ -19,6 +19,7 @@
     - [Question 4: Simple Database Queries](#question-4-simple-database-queries)
     - [Question 5: Slightly Complex Database Queries](#question-5-slightly-complex-database-queries)
     - [Question 6: Experimenting With Views](#question-6-experimenting-with-views)
+    - [Question 7: Updating the Database](#question-7-updating-the-database)
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -1013,3 +1014,41 @@ Zhulin|Mark|BUS|402
 Langley|Colin|LIB|217
 Brown|Jonnel|BUS|433
 Sealy|James|LIB|222
+
+f. Remove faculty_view from your user schema.
+
+```sql
+DROP VIEW FACULTY_VIEW;
+```
+
+g. Explain the effect (if any) of (f) to the database.
+
+> The `FACULTY_VIEW` got deleted and the underlying database was not affected.
+
+### Question 7: Updating the Database
+
+a. Change the room to BUS 211 for all courses taught by Brown. 
+
+```sql
+UPDATE COURSE_SECTION
+SET LOC_ID = 8
+WHERE F_ID = 4; 
+```
+
+C_SEC_ID|COURSE_ID|TERM_ID|SEC_NUM|F_ID|MTG_DAYS|START_TIME|END_TIME|LOC_ID|MAX_ENRL
+----|----|----|----|----|----|----|----|----|----
+1|1|4|1|2|MWF|10:00:00|10:50:00|1|140
+2|1|4|2|3|TR|09:30:00|10:45:00|7|35
+3|1|4|3|3|MWF|08:00:00|08:50:00|2|35
+4|2|4|1|4|TR|11:00:00|12:15:00|8|35
+5|2|5|2|4|TR|14:00:00|15:15:00|8|35
+6|3|5|1|1|MWF|09:00:00|09:50:00|5|30
+7|3|5|2|1|MWF|10:00:00|10:50:00|5|30
+8|4|5|1|5|TR|08:00:00|09:15:00|3|35
+9|5|5|1|2|MWF|14:00:00|14:50:00|5|35
+10|5|5|2|2|MWF|15:00:00|15:50:00|5|35
+11|1|6|1|1|MTWRF|08:00:00|09:30:00|1|50
+12|2|6|1|2|MTWRF|08:00:00|09:30:00|6|35
+13|3|6|1|3|MTWRF|08:00:00|09:30:00|5|35
+
+> Rows 4 and 5 is showing the update.
