@@ -932,3 +932,17 @@ WHERE COURSE_ID IN
 COURSE_NAME
 ----|
 Web-Based Systems
+
+h. List the names of all junior faculty members and their supervisors.  (Think hard on this one!!!)
+
+```sql
+SELECT A.F_FIRST AS JUNIOR_FIRST, A.F_LAST AS JUNIOR_LAST, B.F_FIRST, B.F_LAST 
+FROM FACULTY AS A, FACULTY AS B
+WHERE A.F_RANK LIKE "ASSISTANT" AND A.F_SUPER = B.F_ID;
+```
+
+JUNIOR_FIRST|JUNIOR_LAST|F_FIRST|F_LAST
+----|----|----|----
+Colin|Langley|Jonnel|Brown
+
+
