@@ -945,4 +945,21 @@ JUNIOR_FIRST|JUNIOR_LAST|F_FIRST|F_LAST
 ----|----|----|----
 Colin|Langley|Jonnel|Brown
 
+### Question 6: Experimenting with Views
 
+a. Create a view named faculty_view which contains all of the faculty columns except F_PIN. 
+
+```sql
+CREATE VIEW FACULTY_VIEW AS
+SELECT F_ID, F_LAST, F_FIRST, F_MI, LOC_ID, F_PHONE, F_RANK, F_SUPER 
+FROM FACULTY F;
+
+SELECT * FROM FACULTY_VIEW;
+```
+
+F_ID|F_LAST|F_FIRST|F_MI|LOC_ID|F_PHONE|F_RANK|F_SUPER 
+1|Marx|Teresa|J|9|3251234567|Associat|4
+2|Zhulin|Mark|M|10|3252345678|Ful|NULL
+3|Langley|Colin|A|12|3253456789|Assistan|4
+4|Brown|Jonnel|D|11|3254567890|Ful|NULL
+5|Sealy|James|L|13|3255678901|Associat|2
