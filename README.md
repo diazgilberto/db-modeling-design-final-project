@@ -854,3 +854,30 @@ Tammy|Jones
 Jorge|Perez
 John|Marsh
 Lisa|Johnson
+
+e. Create a Union query that displays the names of courses taken by students who were not Seniors, in addition to courses that were offered in Term 6.
+
+```sql
+SELECT COURSE_NAME FROM COURSE WHERE COURSE_ID IN
+    (
+        SELECT COURSE_ID FROM COURSE_SECTION WHERE C_SEC_ID IN
+        (
+            SELECT C_SEC_ID FROM ENROLLMENT WHERE S_ID IN
+            (
+                SELECT S_ID FROM STUDENT WHERE S_CLASS NOT LIKE 'SR'
+            )
+        )
+    )
+UNION
+SELECT COURSE_NAME FROM COURSE WHERE COURSE_ID IN
+    (
+        SELECT TERM_ID FROM COURSE_SECTION WHERE TERM_ID = 6
+    );
+```
+
+COURSE_NAME
+----|
+Intro. to Info. Tech.
+Systems Analysis
+Intro. to Database Systems
+Web-Based Systems
