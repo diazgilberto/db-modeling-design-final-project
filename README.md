@@ -953,7 +953,9 @@ a. Create a view named faculty_view which contains all of the faculty columns ex
 ```sql
 CREATE VIEW FACULTY_VIEW AS
 SELECT F_ID, F_LAST, F_FIRST, F_MI, LOC_ID, F_PHONE, F_RANK, F_SUPER 
-FROM FACULTY F;
+FROM FACULTY
+
+WITH CHECK OPTION;
 
 SELECT * FROM FACULTY_VIEW;
 ```
@@ -965,3 +967,18 @@ F_ID|F_LAST|F_FIRST|F_MI|LOC_ID|F_PHONE|F_RANK|F_SUPER
 3|Langley|Colin|A|12|3253456789|Assistan|4
 4|Brown|Jonnel|D|11|3254567890|Ful|NULL
 5|Sealy|James|L|13|3255678901|Associat|2
+
+b. Insert the following tuple into faculty_view: (6, “May”, “Lisa”, “I”, 11, “3256789012”, “Assistant”).
+
+```sql
+INSERT INTO FACULTY_VIEW (F_ID,F_LAST,F_FIRST,F_MI,LOC_ID,F_PHONE,F_RANK,F_SUPER)
+VALUES(6, 'May', 'Lisa', 'I', 11, '3256789012', 'Assistant', NULL);
+
+SELECT * FROM FACULTY_VIEW;
+```
+
+    Last Error Message
+    [ERROR in query 1] Field of view 'LIPSCOMB.FACULTY_VIEW' underlying table doesn't have a default value
+
+*P.232* First paragraph
+> In `SQL`, the clause `WITH CHECK OPTION` should be added at the end of the view definition if a view is to be updated by `INSERT`, `DELETE`, or `UPDATE` statements. This allows the system to reject operations that violate the `SQL` rules for view updates.
