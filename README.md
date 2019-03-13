@@ -18,6 +18,7 @@
     - [Question 3: Checking Your Database](#question-3-checking-your-database)
     - [Question 4: Simple Database Queries](#question-4-simple-database-queries)
     - [Question 5: Slightly Complex Database Queries](#question-5-slightly-complex-database-queries)
+    - [Question 6: Experimenting With Views](#question-6-experimenting-with-views)
 <!-- /TOC -->
 
 ## Lipscomb Database
@@ -945,7 +946,7 @@ JUNIOR_FIRST|JUNIOR_LAST|F_FIRST|F_LAST
 ----|----|----|----
 Colin|Langley|Jonnel|Brown
 
-### Question 6: Experimenting with Views
+### Question 6: Experimenting With Views
 
 a. Create a view named faculty_view which contains all of the faculty columns except F_PIN. 
 
